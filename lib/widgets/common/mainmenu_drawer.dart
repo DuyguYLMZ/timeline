@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tablet_app/screens/navdb/screens/navdb_page.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_screen.dart';
 import 'package:tablet_app/widgets/menu/menuitems/mainmenuitems.dart';
 
@@ -90,7 +91,7 @@ List<Widget> getMainMenuDrawerItems(BuildContext context, GlobalKey<State<Statef
       className = UserSettingsScreen();
       break;
     case MainMenuItems.NAVDB:
-      className = UserSettingsScreen();
+      className = NavDBPage();
       break;
     case MainMenuItems.OPTIONS:
       className = UserSettingsScreen();
