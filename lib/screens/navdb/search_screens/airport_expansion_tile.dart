@@ -22,6 +22,7 @@ class ExpansionTileWidget extends StatelessWidget {
         data: ThemeData(
             textTheme: TextTheme(subhead: TextStyle(color: Colors.white))),
         child: ExpansionTile(
+          initiallyExpanded: true,
           key: PageStorageKey<String>(airportEntry.name),
           title: Text('${airportEntry.name}'),
           children: <Widget>[
@@ -77,6 +78,7 @@ Widget getAirportExpansionTileForTablet(double extensionTileFontSize, var airpor
         data: ThemeData(
             textTheme: TextTheme(subhead: TextStyle(color: Colors.white))),
         child: ExpansionTile(
+          initiallyExpanded: true,
           key: PageStorageKey<String>(airportEntry.name
           ),
           title: Text('${airportEntry.name}'),

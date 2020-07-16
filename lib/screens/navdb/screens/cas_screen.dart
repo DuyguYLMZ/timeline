@@ -46,14 +46,14 @@ class _CasScreenState extends State<CasScreen>  with WidgetsBindingObserver {
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      flex: 2,
+                      flex: 3,
                       child: Text(
                         "Cas",
                         style: defaultTableWhiteTitleStyle,
                       ),
                     ),
                     Expanded(
-                        flex: 7,
+                        flex: 1,
                         child: FilterTextField(
                           height: 40.0,
                           width: 300.0,
@@ -64,24 +64,6 @@ class _CasScreenState extends State<CasScreen>  with WidgetsBindingObserver {
                   ],
                 ),
               ),
-              Expanded(
-                flex: 4,
-                child: SizedBox(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width/2,
-                )
-              ),
-              Expanded(
-                flex: 1,
-                child: Theme(
-                  data: ThemeData(
-                    accentColor: Colors.blueAccent
-                  ),
-                  child: addButton
-                ),
-              )
             ]),
       ),
       body: body(context),

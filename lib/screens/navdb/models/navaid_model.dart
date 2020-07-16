@@ -8,7 +8,7 @@ class NavaidModel{
   NavaidModel(this.identifier, this.name, this.navaidType);
 }
 
-final airportList = [new NavaidModel('MEN', 'MENDERES','TACAN'),
+final navaidList = [new NavaidModel('MEN', 'MENDERES','TACAN'),
   new NavaidModel('MNI', 'MERZIFON','VOR_DME'),
   new NavaidModel('SYT', 'SIVRIHISAR','TACAN'),
   new NavaidModel('USK', 'USAK','VOR_DME'),

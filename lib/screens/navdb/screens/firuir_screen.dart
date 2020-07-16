@@ -38,7 +38,7 @@ class _FirUirScreenState extends State<FirUirScreen>  with WidgetsBindingObserve
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Text(
                   "Fir/Uirs",
                   style: defaultWhiteTitleStyle,
@@ -184,6 +184,7 @@ class _FirUirScreenState extends State<FirUirScreen>  with WidgetsBindingObserve
                         ))
                 ),
                 child: ExpansionTile(
+                  initiallyExpanded: true,
                   key: PageStorageKey<String>(firUirList[index].identifier),
                   title: Text('${firUirList[index].identifier}'),
                   children: <Widget>[
