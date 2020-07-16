@@ -12,6 +12,10 @@ import 'package:tablet_app/values/tablet_theme.dart';
 
 class AirwayScreen extends StatefulWidget {
   static const routeName = "/airways";
+  final GlobalKey scaffoldKey;
+
+  AirwayScreen(this.scaffoldKey);
+
   @override
   State<StatefulWidget> createState() {
     return _AirwayScreenState();
@@ -58,6 +62,7 @@ class _AirwayScreenState extends State<AirwayScreen>
               Expanded(
                   flex: 1,
                   child: FilterTextField(
+                    labelText: 'Search Anything...',
                     isNumber: true,
                     width: 60,
                     height: 40,
@@ -72,13 +77,12 @@ class _AirwayScreenState extends State<AirwayScreen>
               reverse: true
           ),
           items: <Widget>[
-            Stack(children:
-            <Widget>[
+            //Stack(children:
+            //<Widget>[
               useMobileLayout ? _buildMobileLayout(context) : _buildTabletLayout(context),
-              AdvancedSearchSheet()
-            ],
-
-            ),
+              //AdvancedSearchSheet()
+            //],
+            //),
             new Container(
                 height: height,
                 width: width,

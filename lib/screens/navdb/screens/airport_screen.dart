@@ -11,6 +11,9 @@ import '../../../values/theme.dart';
 
 class AirportScreen extends StatefulWidget {
   static const routeName = "/airports";
+  final GlobalKey scaffoldKey;
+
+  AirportScreen(this.scaffoldKey);
 
   @override
   State<StatefulWidget> createState() {
@@ -68,6 +71,7 @@ class _AirportScreenState extends State<AirportScreen>
                     Expanded(
                         flex: 7,
                         child: FilterTextField(
+                          icon: Icon(Icons.search),
                           height: 40.0,
                           width: 300.0,
                           isNumber: false,

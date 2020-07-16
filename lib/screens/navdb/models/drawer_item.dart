@@ -13,7 +13,6 @@ final drawerItems = [
   new DrawerItem('Runway', Icons.linear_scale),
   new DrawerItem('Airway', Icons.linear_scale),
   new DrawerItem('Navaid', Icons.navigation),
-  new DrawerItem('Waypoint', Icons.control_point),
   new DrawerItem('Fir/Uir', Icons.linear_scale),
   new DrawerItem('Cas', Icons.polymer),
   new DrawerItem('Ras/Saa', Icons.remove_circle),

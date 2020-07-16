@@ -105,7 +105,7 @@ class _AdvancedSearchSheetState extends State<AdvancedSearchSheet> with SingleTi
                           height: _opened ? 25 : 0,
                           width: _opened ? 200 : 0,
                           isNumber: false,
-                          icon: _opened ? Icon(Icons.search) : null,
+                          icon: _opened ? Icon(Icons.search ,color: Colors.black,) : null,
                         )
                     ),
                     AnimatedPositioned(

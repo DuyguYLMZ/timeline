@@ -91,7 +91,7 @@ List<Widget> getMainMenuDrawerItems(BuildContext context, GlobalKey<State<Statef
       className = UserSettingsScreen();
       break;
     case MainMenuItems.NAVDB:
-      className = NavDBPage();
+      className = NavDBPage(0, scaffoldKey);
       break;
     case MainMenuItems.OPTIONS:
       className = UserSettingsScreen();

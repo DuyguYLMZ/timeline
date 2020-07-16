@@ -13,14 +13,18 @@ import 'package:tablet_app/screens/navdb/screens/runway_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/waypoint_screen.dart';
 import 'package:tablet_app/values/theme.dart';
 import 'package:tablet_app/screens/navdb/models/drawer_item.dart';
+import 'package:tablet_app/widgets/menu/menuitems/navdbmenuitems.dart';
 
+import '../../../widgets/common/appbar.dart';
 import 'collapsible_widget.dart';
 
 class NavDBPage extends StatefulWidget {
   static const routeName = "/navdb";
   final int pageindex;
+  final GlobalKey scaffoldKey;
 
-  const NavDBPage({this.pageindex});
+
+  const NavDBPage(this.pageindex, this.scaffoldKey);
 
   @override
   NavdbPageState createState() {
@@ -70,12 +74,11 @@ class NavdbPageState extends State<NavDBPage> {
 
       final widgetOptions = [
         new DatabaseSelection(),
-        new AirportScreen(),
+        new AirportScreen(widget.scaffoldKey),
         new AircommScreen(),
         new RunwayScreen(),
-        new AirwayScreen(),
+        new AirwayScreen(widget.scaffoldKey),
         new NavaidScreen(),
-        new WaypointScreen(),
         new FirUirScreen(),
         new CasScreen(),
         new RasSaaScreen(),
@@ -89,8 +92,10 @@ class NavdbPageState extends State<NavDBPage> {
         ));
       }
       return Scaffold(
-        appBar: AppBar(
-          title: Text('NavDB Management'),
+        appBar: AppBarWidget(
+          isHome: false,
+          scaffoldKey: widget.scaffoldKey,
+          title: "NavDB Management",
         ),
         body: Center(
           child: widgetOptions.elementAt(selectedIndex),
