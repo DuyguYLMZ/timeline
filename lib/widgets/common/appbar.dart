@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tablet_app/screens/home_screen.dart';
+import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
 
 import '../appbar_buttons.dart';
 
@@ -10,8 +11,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey scaffoldKey;
   double height;
   bool isHome = false;
+  List<MenuButtonItem> menuContents;
 
-  AppBarWidget({this.scaffoldKey, this.title, this.isHome}) /*: assert(title != null)*/;
+  AppBarWidget({this.scaffoldKey, this.title, this.isHome, this.menuContents}) /*: assert(title != null)*/;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             context: context,
             scaffoldKey: scaffoldKey,
             isHome: isHome,
+            menuContents: menuContents,
           )
         ]);
     ;
