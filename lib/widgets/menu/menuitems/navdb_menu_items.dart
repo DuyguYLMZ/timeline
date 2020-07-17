@@ -6,13 +6,13 @@ class NavDBMenuItem extends MenuButtonItem{
 
   NavDBMenuItem(int id, String name){
     super.itemId = id;
-    super.itemName = itemName;
+    super.itemName = name;
   }
 
   @override
-  int get id => id;
+  int get id => itemId;
 
   @override
-  String get name => name;
+  String get name => itemName;
 
 }

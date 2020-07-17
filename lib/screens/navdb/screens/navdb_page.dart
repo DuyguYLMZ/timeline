@@ -1,19 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:tablet_app/screens/navdb/screens/airport_comm.dart';
+import 'package:tablet_app/screens/navdb/menu_models/navdb_context_menu.dart';
 import 'package:tablet_app/screens/navdb/screens/airport_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/airway_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/cas_screen.dart';
-import 'package:tablet_app/screens/navdb/screens/dbselection_page.dart';
 import 'package:tablet_app/screens/navdb/screens/firuir_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/navaid_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/ras_saa_screen.dart';
-import 'package:tablet_app/screens/navdb/screens/runway_screen.dart';
-import 'package:tablet_app/screens/navdb/screens/waypoint_screen.dart';
 import 'package:tablet_app/values/theme.dart';
 import 'package:tablet_app/screens/navdb/models/drawer_item.dart';
-import 'package:tablet_app/widgets/menu/menuitems/navdbmenuitems.dart';
+import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
+
 
 import '../../../widgets/common/appbar.dart';
 import 'collapsible_widget.dart';
@@ -35,6 +32,7 @@ class NavDBPage extends StatefulWidget {
 class NavdbPageState extends State<NavDBPage> {
 
   int selectedIndex = 0;
+  List<MenuButtonItem> contextMenuList = getMenuItems();
 
   @override
   void initState() {
@@ -94,6 +92,7 @@ class NavdbPageState extends State<NavDBPage> {
           isHome: false,
           scaffoldKey: widget.scaffoldKey,
           title: "NavDB Management",
+          menuContents: contextMenuList,
         ),
         body: Center(
           child: widgetOptions.elementAt(selectedIndex),
