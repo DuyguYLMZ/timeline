@@ -7,6 +7,7 @@ import 'package:tablet_app/screens/navdb/screens/cas_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/firuir_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/navaid_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/ras_saa_screen.dart';
+import 'package:tablet_app/screens/navdb/search_screens/airport_advanced_search.dart';
 import 'package:tablet_app/values/theme.dart';
 import 'package:tablet_app/screens/navdb/models/drawer_item.dart';
 import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
@@ -93,6 +94,7 @@ class NavdbPageState extends State<NavDBPage> {
           scaffoldKey: widget.scaffoldKey,
           title: "NavDB Management",
           menuContents: contextMenuList,
+          onMenuItemSelected: onMenuSelect,
         ),
         body: Center(
           child: widgetOptions.elementAt(selectedIndex),
@@ -110,6 +112,18 @@ class NavdbPageState extends State<NavDBPage> {
     }
   }
 
+  void onMenuSelect(int selected){
+    if(selected == 0){
+      showDialog(
+          context: context,
+          builder: (BuildContext context){
+            return AlertDialog(
+              backgroundColor: drawerBackgroundColor,
+              content: AirportAdvancedSearch(),
+            );
+          });
+    }
+  }
 
   void onItemTapped(int index) {
     setState(() {

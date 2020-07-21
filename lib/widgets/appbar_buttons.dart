@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tablet_app/util/themenotifier.dart';
 import 'package:tablet_app/values/theme.dart';
-import 'package:tablet_app/widgets/menu/menuitems/appbarmenubuttonitems.dart';
 import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
-import 'package:tablet_app/widgets/menu/menuitems/settingsmenuitems.dart';
 
 import 'menu/menuitems/toolmenuitems.dart';
 
@@ -16,7 +14,8 @@ class AppBarButtonWidget extends StatelessWidget {
   bool showCoor = true;
   bool showScaleBar = true;
   List<MenuButtonItem> menuContents;
-  AppBarButtonWidget({this.context, this.scaffoldKey,this.isHome, this.menuContents});
+  Function(int) onMenuItemSelected;
+  AppBarButtonWidget({this.context, this.scaffoldKey,this.isHome, this.menuContents, this.onMenuItemSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,9 @@ class AppBarButtonWidget extends StatelessWidget {
           child: PopupMenuButton(
             child: Text("Menu"),
             itemBuilder: (context) => getMenuItems(),
-            onSelected: (value) {},
+            onSelected:  (value){
+              onMenuItemSelected(value);
+            },
           ),
         ),
         SizedBox(

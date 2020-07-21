@@ -12,8 +12,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   double height;
   bool isHome = false;
   List<MenuButtonItem> menuContents;
+  Function(int) onMenuItemSelected;
 
-  AppBarWidget({this.scaffoldKey, this.title, this.isHome, this.menuContents}) /*: assert(title != null)*/;
+  AppBarWidget({this.scaffoldKey, this.title, this.isHome, this.menuContents, this.onMenuItemSelected}) /*: assert(title != null)*/;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             scaffoldKey: scaffoldKey,
             isHome: isHome,
             menuContents: menuContents,
+            onMenuItemSelected: onMenuItemSelected,
           )
         ]);
     ;

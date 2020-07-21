@@ -39,6 +39,19 @@ class _HomePageState extends State<HomePage> {
         scaffoldKey: _scaffoldKey,
         title: widget.title == null ? "" : widget.title,
         isHome: true,
+        onMenuItemSelected: (int value){
+          showDialog(
+              context: context,
+              builder: (BuildContext context){
+                return Center(
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      child: new Container(),
+                    )
+                );
+              });
+        },
       ),
       drawer: MainMenuDrawer(context, _scaffoldKey),
       body: Stack(
