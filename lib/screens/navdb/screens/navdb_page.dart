@@ -72,7 +72,6 @@ class NavdbPageState extends State<NavDBPage> {
     }else{
 
       final widgetOptions = [
-        //new DatabaseSelection(),
         new AirportScreen(widget.scaffoldKey),
         new AirwayScreen(widget.scaffoldKey),
         new NavaidScreen(),
