@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tablet_app/values/theme.dart';
 
-class PalletCargo extends StatefulWidget {
+class FixedCargo extends StatefulWidget {
   @override
-  _PalletCargo createState() => _PalletCargo();
+  _FixedCargo createState() => _FixedCargo();
 }
 
 class _ListItem {
@@ -14,7 +14,7 @@ class _ListItem {
   bool checked;
 }
 
-class _PalletCargo extends State<PalletCargo> {
+class _FixedCargo extends State<FixedCargo> {
   static final _items = <String>[
     'A',
     'B',
@@ -39,6 +39,8 @@ class _PalletCargo extends State<PalletCargo> {
           (item) =>
           CheckboxListTile(
             key: Key(item.value),
+            checkColor: white,
+            activeColor: wabBackgroundColor,
             value: item.checked ?? false,
             onChanged: (bool newValue) {
               setState(() => item.checked = newValue);
@@ -46,12 +48,10 @@ class _PalletCargo extends State<PalletCargo> {
             title: Text('Palet ${item.value}'),
             isThreeLine: true,
             subtitle: Text('Item ${item.value}, ekli =${item.checked}'),
-            secondary: Icon(Icons.drag_handle),
           ),
     )
         .toList();
     return ListView(
-
       children: _listTiles,
     );
   }

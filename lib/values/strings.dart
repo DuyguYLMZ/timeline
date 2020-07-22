@@ -34,4 +34,6 @@ class Strings {
   static const String DARK_THEME = "Gece Modu";
   static const String LIGHT_THEME = "Gündüz Modu";
   static const String MAP = "Map";
+  static const String VOLUME = "Hacim";
+  static const String WEIGHT = "Ağırlık";
 }

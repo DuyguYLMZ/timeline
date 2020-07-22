@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tablet_app/util/themenotifier.dart';
 import 'package:tablet_app/values/strings.dart';
 import 'package:tablet_app/values/theme.dart';
-import 'package:tablet_app/widgets/menu/menuitems/settingsmenuitems.dart';
 
 class SettingsWidget extends StatelessWidget {
   bool compass = false;
@@ -11,28 +12,31 @@ class SettingsWidget extends StatelessWidget {
 
   bool isCompass = false;
 
+  ThemeNotifier provider;
+
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<ThemeNotifier>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Container(
-          width: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width,
             child: Row(
-          children: <Widget>[
-            Text(Strings.OPACITIES, style: defaultWhiteStyle),
-            Slider(
-              activeColor:wabBackgroundColor,
-              min: 0,
-              max: 100,
-              value: _value,
-              onChanged: (value) {
-                (context as Element).markNeedsBuild();
-                _value = value;
-              },
-            )
-          ],
-        )),
+              children: <Widget>[
+                Text(Strings.OPACITIES, style: defaultWhiteStyle),
+                Slider(
+                  activeColor: wabBackgroundColor,
+                  min: 0,
+                  max: 100,
+                  value: _value,
+                  onChanged: (value) {
+                    (context as Element).markNeedsBuild();
+                    _value = value;
+                  },
+                )
+              ],
+            )),
         Container(
           width: MediaQuery.of(context).size.width,
           child: Scrollbar(
@@ -50,7 +54,7 @@ class SettingsWidget extends StatelessWidget {
                         spacing: 10,
                         runSpacing: 10,
                         direction: Axis.horizontal,
-                        alignment: WrapAlignment.start ,
+                        alignment: WrapAlignment.start,
                         children: <Widget>[
                           Container(
                             width: 97,
@@ -67,7 +71,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.COMPASS, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.COMPASS,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -86,7 +93,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.DEFAULT_SCALE, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.DEFAULT_SCALE,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -105,7 +115,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.AIRLINE, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.AIRLINE,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -124,7 +137,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.MAP_PROJECTION, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.MAP_PROJECTION,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -143,7 +159,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.COORDINATES_GRID, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.COORDINATES_GRID,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -162,7 +181,11 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Flexible(child: Text(Strings.COORDINATES_FORMAT, style: defaultWhiteStyle))],
+                                children: <Widget>[
+                                  Flexible(
+                                      child: Text(Strings.COORDINATES_FORMAT,
+                                          style: defaultWhiteStyle))
+                                ],
                               ),
                             ),
                           ),
@@ -181,7 +204,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.DIRECTION_REFERENCE, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.DIRECTION_REFERENCE,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -200,7 +226,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.SHOW_SCALE_BAR, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.SHOW_SCALE_BAR,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -219,7 +248,10 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.SHOW_COORDINATES, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(Strings.SHOW_COORDINATES,
+                                      style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -229,6 +261,7 @@ class SettingsWidget extends StatelessWidget {
                             child: RaisedButton(
                               color: btnColor,
                               onPressed: () {
+                                changeTheme();
                                 (context as Element).markNeedsBuild();
                               },
                               animationDuration: Duration(seconds: 5),
@@ -238,7 +271,9 @@ class SettingsWidget extends StatelessWidget {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[Text(Strings.DARK_THEME, style: defaultWhiteStyle)],
+                                children: <Widget>[
+                                  Text(provider.getThemeName(), style: defaultWhiteStyle)
+                                ],
                               ),
                             ),
                           ),
@@ -253,5 +288,14 @@ class SettingsWidget extends StatelessWidget {
         )
       ],
     );
+  }
+
+  void changeTheme() {
+    if (provider.getTheme() == darkTheme) {
+      provider.setTheme(lightTheme);
+    } else {
+      provider.setTheme(darkTheme);
+    }
+    provider.changeThemeName();
   }
 }
