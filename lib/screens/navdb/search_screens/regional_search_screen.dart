@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:tablet_app/values/theme.dart';
 
 class RegionalSearchScreen extends StatefulWidget{
 
@@ -20,6 +21,9 @@ class _RegionalSearchScreenState extends State{
     return new Container(
       height: heightOfWidget * 0.5,
       width: widthOfWidget * 0.4,
+      decoration: BoxDecoration(
+        color: drawerBackgroundColor,
+      ),
     );
   }
 
