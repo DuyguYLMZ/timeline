@@ -38,7 +38,7 @@ const TextStyle listTitleSelectedTextStyle =
 const TextStyle defaultWhiteStyle =
     TextStyle(color: white, fontSize: 13.0, fontWeight: FontWeight.normal);
 const TextStyle greyStyle =
-    TextStyle(color: grey, fontSize: 13.0, fontWeight: FontWeight.normal);
+    TextStyle(color: grey, fontSize: 11.0, fontWeight: FontWeight.normal);
 const TextStyle greyBigStyle =
     TextStyle(color: grey, fontSize: 15.0, fontWeight: FontWeight.normal);
 const TextStyle defaultWhiteBigStyle = TextStyle(
@@ -46,7 +46,7 @@ const TextStyle defaultWhiteBigStyle = TextStyle(
 const TextStyle defaultWhiteTitleStyle =
     TextStyle(color: white, fontSize: 18.0, fontWeight: FontWeight.normal);
 const TextStyle normalTextStyle =
-    TextStyle(color: white, fontSize: 15.0, fontWeight: FontWeight.normal);
+    TextStyle(color: white, fontSize: 18.0, fontWeight: FontWeight.normal);
 const TextStyle normalBoldTextStyle = TextStyle(
   color: white,
   fontSize: 18.0,
@@ -57,8 +57,7 @@ const TextStyle normalBoldTextStyle = TextStyle(
 const Color selectedColor = Colors.blueAccent;
 //const Color drawerBackgroundColor = Color(0xFF272D34);
 Color drawerBackgroundColor = Colors.grey[900];
-//const Color wabBackgroundColor = Color(0xFF2979FF);
-const Color wabBackgroundColor = Colors.blue;
+const Color wabBackgroundColor = Color(0xFF2979FF);
 Color backgroundColor = Colors.grey[900];
 
 const Color white = Colors.white;

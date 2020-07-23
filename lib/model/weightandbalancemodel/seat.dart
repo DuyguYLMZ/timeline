@@ -1,11 +1,10 @@
-class Crew {
+class Seat{
   int _id;
   String _name;
   double _weight;
   double _arm;
-  double _moment;
 
-  Crew();
+  Seat();
 
   String get name => _name;
 
@@ -30,12 +29,5 @@ class Crew {
   void setId(int value) {
     _id = value;
   }
-
-  double get moment => _moment;
-
-  void setMoment(double value) {
-    _moment = value;
-  }
-
 
 }

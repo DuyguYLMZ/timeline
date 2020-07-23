@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tablet_app/layouts/weightandbalance/weightandbalance_screen.dart';
+import 'package:tablet_app/screens/weightandbalance/weightandbalance_screen.dart';
 import 'package:tablet_app/widgets/menu/menuitems/mainmenuitems.dart';
 
-import '../../layouts/user_settings_screen.dart';
+import '../../screens/user_settings_screen.dart';
 
 Widget MainMenuDrawer(BuildContext context, GlobalKey<State<StatefulWidget>> scaffoldKey) {
   return Drawer(
