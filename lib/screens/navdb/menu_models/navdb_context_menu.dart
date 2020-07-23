@@ -5,7 +5,6 @@ import 'package:tablet_app/widgets/menu/menuitems/navdb_menu_items.dart';
 List<MenuButtonItem> getMenuItems(){
   List<MenuButtonItem> menuItemList = [];
   menuItemList.add(new NavDBMenuItem(0, "Advanced Search"));
-  menuItemList.add(new NavDBMenuItem(1, "Example 1"));
-  menuItemList.add(new NavDBMenuItem(2, "Example 2"));
+  menuItemList.add(new NavDBMenuItem(1, "Regional Search"));
   return menuItemList;
 }

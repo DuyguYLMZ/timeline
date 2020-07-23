@@ -101,7 +101,7 @@ class _AirportDetailWidgetState extends State<AirportDetailWidget>{
                       tabs: [
                         Tab(text: 'Airport Communication'),
                         Tab(text: 'Runway'),
-                        Tab(text: 'Navaid')
+                        Tab(text: 'Terminal Navaid')
                       ]
                   ),
                 ),

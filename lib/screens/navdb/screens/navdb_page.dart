@@ -8,6 +8,8 @@ import 'package:tablet_app/screens/navdb/screens/firuir_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/navaid_screen.dart';
 import 'package:tablet_app/screens/navdb/screens/ras_saa_screen.dart';
 import 'package:tablet_app/screens/navdb/search_screens/airport_advanced_search.dart';
+import 'package:tablet_app/screens/navdb/search_screens/airway_advanced_search.dart';
+import 'package:tablet_app/screens/navdb/search_screens/regional_search_screen.dart';
 import 'package:tablet_app/values/theme.dart';
 import 'package:tablet_app/screens/navdb/models/drawer_item.dart';
 import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
@@ -111,14 +113,32 @@ class NavdbPageState extends State<NavDBPage> {
     }
   }
 
-  void onMenuSelect(int selected){
-    if(selected == 0){
+  void onMenuSelect(int selectedMenuItem){
+    if(selectedMenuItem == 0 && selectedIndex == 0){ //Airport Search
       showDialog(
           context: context,
           builder: (BuildContext context){
             return AlertDialog(
               backgroundColor: drawerBackgroundColor,
               content: AirportAdvancedSearch(),
+            );
+          });
+    }else if(selectedMenuItem == 0 && selectedIndex == 1){ //Airway Search
+      showDialog(
+          context: context,
+          builder: (BuildContext context){
+            return AlertDialog(
+              backgroundColor: drawerBackgroundColor,
+              content: AirwayAdvancedSearch(),
+            );
+          });
+    }else if(selectedMenuItem == 1){
+      showDialog(
+          context: context,
+          builder: (BuildContext context){
+            return AlertDialog(
+              backgroundColor: drawerBackgroundColor,
+              content: RegionalSearchScreen(),
             );
           });
     }
