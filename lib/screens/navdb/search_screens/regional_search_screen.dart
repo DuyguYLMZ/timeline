@@ -24,6 +24,7 @@ class _RegionalSearchScreenState extends State{
       decoration: BoxDecoration(
         color: drawerBackgroundColor,
       ),
+
     );
   }
 
