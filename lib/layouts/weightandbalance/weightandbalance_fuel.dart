@@ -30,11 +30,10 @@ class _WABFuelState extends State<WABFuel> {
   bool _isAnimatedManu = false;
   double _animatedWidthAuto;
   double _animatedWidthManu;
-  double _iconHeightAuto = 20.0;
   double _iconWidthAuto = 180.0;
-  double _iconHeightManu = 20.0;
   double _iconWidthManu = 180.0;
-  bool _isVisible = true;
+  static double _densityValue = 0;
+  static double _quantityValue = 0;
   bool _isVertical = true;
   static Fuel fuel1 = new Fuel("Left - Aux Tank", 10, 2.0, 20);
   static Fuel fuel2 = new Fuel("Left - Main Tank", 10, 2.5, 25);
@@ -96,12 +95,11 @@ class _WABFuelState extends State<WABFuel> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       _upToDateInfo(),
-                      _mode(),
-                      _calculateFuel()
+                      _calculateFuel(),
                     ],
                   ),
                   Container(
@@ -110,40 +108,7 @@ class _WABFuelState extends State<WABFuel> {
                   )
                 ],
               ),
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: size.width,
-                      height: size.height / 3,
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        elevation: 20,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular((15))),
-                        child: ListView(
-                          padding: EdgeInsets.all(8.0),
-                          children: fuelTankList
-                              .map((data) => ListTile(
-                                    title: Text(data.name),
-                                    subtitle: Text(data.weight.toString() +
-                                        " lbs" +
-                                        "\t\t" +
-                                        data.arm.toString() +
-                                        " mt" +
-                                        "\t\t" +
-                                        data.moment.toString() +
-                                        " kg.mt"),
-                                  ))
-                              .toList(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              _tankList(),
             ],
           ),
         ],
@@ -169,51 +134,21 @@ class _WABFuelState extends State<WABFuel> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[_upToDateInfo(), _mode()],
-                    ),
+                    _upToDateInfo(),
                     _totalInfoWidget(),
                   ],
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.all(8.0),
-                          height: size.height / 2,
-                          child: Card(
-                            elevation: 20,
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                BorderRadius.circular((15))),
-                            child: ListView(
-                              padding: EdgeInsets.all(8.0),
-                              children: fuelTankList
-                                  .map((data) => ListTile(
-                                title: Text(data.name),
-                                subtitle: Text(
-                                    data.weight.toString() +
-                                        " lbs" +
-                                        "\t\t" +
-                                        data.arm.toString() +
-                                        " mt" +
-                                        "\t\t" +
-                                        data.moment.toString() +
-                                        " kg.mt"),
-                              ))
-                                  .toList(),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                  child: Container(
+                      width: size.width,
+                      height: size.height,
+                      child: Column(
+                        children: <Widget>[
+                          _calculateFuel(),
+                          _tankList(),
+                        ],
+                      )),
+                )
               ],
             )
           ]),
@@ -297,7 +232,7 @@ class _WABFuelState extends State<WABFuel> {
   _upToDateInfo() {
     return Container(
       margin: EdgeInsets.all(8),
-      width: 270,
+      width: _isVertical ? 270 : size.width / 2,
       height: 210,
       child: Card(
         elevation: 20,
@@ -362,7 +297,7 @@ class _WABFuelState extends State<WABFuel> {
 
   _mode() {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.all(8),
       width: 200,
       height: 210,
       child: Column(
@@ -390,285 +325,11 @@ class _WABFuelState extends State<WABFuel> {
                   child: Column(
                     children: <Widget>[
                       FlatButton(
-                        child: Text("Otomatik"),
+                        child: Text(Strings.AUTOMATIC),
                         onPressed: () {
                           _changeButton(0);
                         },
                       ),
-                      /* Visibility(
-                        visible: _isAnimatedAuto,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 120),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
-                                children: [
-                                  ToggleButtons(
-                                    color: white,
-                                    selectedColor: Colors.amberAccent,
-                                    fillColor: Colors.blueAccent,
-                                    splashColor: Colors.blue,
-                                    highlightColor: grey,
-                                    borderColor: white,
-                                    borderWidth: 1.5,
-                                    selectedBorderColor: selectedColor,
-                                    renderBorder: true,
-                                    borderRadius:
-                                    BorderRadius.circular(8.0),
-                                    disabledColor: Colors.blueGrey,
-                                    disabledBorderColor: Colors.blueGrey,
-                                    focusColor: Colors.white70,
-                                    focusNodes: focusToggle,
-                                    children: <Widget>[
-                                      Container(
-                                          width: (MediaQuery.of(context)
-                                              .size
-                                              .width -
-                                              36) /
-                                              5,
-                                          child: new Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              new Text(
-                                                "Ağırlık",
-                                                style: defaultWhiteStyle,
-                                              )
-                                            ],
-                                          )),
-                                      Container(
-                                          width: (MediaQuery.of(context)
-                                              .size
-                                              .width -
-                                              36) /
-                                              5,
-                                          child: new Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              new Text("Hacim",
-                                                  style:
-                                                  defaultWhiteStyle)
-                                            ],
-                                          )),
-                                    ],
-                                    isSelected: isSelected,
-                                    onPressed: (int index) {
-                                      setState(() {
-                                        for (int i = 0;
-                                        i < isSelected.length;
-                                        i++) {
-                                          isSelected[i] = i == index;
-                                        }
-                                        if (isSelected[0]) {
-                                          isWeight = true;
-                                          isVolume = false;
-                                        } else {
-                                          isWeight = false;
-                                          isVolume = true;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context)
-                                        .size
-                                        .width /
-                                        3.3,
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: new Text(
-                                      'Yakıt Yoğunluğu',
-                                      style: defaultWhiteStyle,
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Row(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.start,
-                                      children: [
-                                        TextField(
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            contentPadding:
-                                            EdgeInsets.all(8),
-                                            fillColor: white,
-                                            filled: true,
-                                            border: OutlineInputBorder(),
-                                            hintStyle: TextStyle(
-                                                color: Colors.grey),
-                                          ),
-                                          autofocus: false,
-                                        ),
-                                        SizedBox(
-                                          width: 8,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(color: grey,height: 8.0),
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context)
-                                        .size
-                                        .width /
-                                        3.3,
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: new Text(
-                                      'Yakıt Miktarı',
-                                      style: defaultWhiteStyle,
-                                    ),
-                                  ),
-                                  Flexible(
-                                    child: Container(
-                                      child: Row(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.start,
-                                        children: [
-                                          TextField(
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              contentPadding:
-                                              EdgeInsets.all(8),
-                                              fillColor: white,
-                                              filled: true,
-                                              border: OutlineInputBorder(),
-                                              hintStyle: TextStyle(
-                                                  color: Colors.grey),
-                                            ),
-                                            autofocus: false,
-                                          ),
-                                          SizedBox(
-                                            width: 8,
-                                          ),
-                                           Visibility(
-                                             visible: isWeight,
-                                                child: Container(
-                                            child: Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .start,
-                                                children: [
-                                                  CustomDropDownMenu(
-                                                      dropdownValue:
-                                                      currentValue,
-                                                      spinnerItems: [
-                                                        DropdownMenuItem(
-                                                          value: 0,
-                                                          child: Text(
-                                                              'lbs'),
-                                                        ),
-                                                        DropdownMenuItem(
-                                                          value: 1,
-                                                          child: Text(
-                                                              'kg'),
-                                                        ),
-                                                      ].cast<
-                                                          DropdownMenuItem<
-                                                              int>>(),
-                                                      onChanged:
-                                                          (value) {
-                                                        setState(() {
-                                                          currentValue =
-                                                              value;
-                                                        });
-                                                      })
-                                                ],
-                                            ),
-                                          ),),
-                                          Visibility(
-                                            visible: isVolume,
-                                            child: Text(
-                                              "lt",
-                                              style:
-                                              defaultWhiteBigStyle,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  RaisedButton(
-                                    color: Colors.white70,
-                                    splashColor: selectedColor,
-                                    animationDuration:
-                                    Duration(seconds: 5),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      new BorderRadius.circular(13.0),
-                                      side:
-                                      BorderSide(color: Colors.black),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        Text("Yakıtı Dağıt"),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      setState(() {});
-                                    },
-                                  ),
-                                  RaisedButton(
-                                    color: Colors.white70,
-                                    splashColor: selectedColor,
-                                    animationDuration:
-                                    Duration(seconds: 5),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      new BorderRadius.circular(13.0),
-                                      side:
-                                      BorderSide(color: Colors.black),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        Text("Maks. Yakıtı Dağıt"),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      setState(() {});
-                                    },
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),*/
                     ],
                   )),
             ),
@@ -691,7 +352,7 @@ class _WABFuelState extends State<WABFuel> {
                   duration: Duration(seconds: 0),
                   curve: Curves.fastOutSlowIn,
                   child: FlatButton(
-                    child: Text("Manuel"),
+                    child: Text(Strings.MANUEL),
                     onPressed: () {
                       _changeButton(1);
                     },
@@ -745,163 +406,128 @@ class _WABFuelState extends State<WABFuel> {
     return _isAnimatedAuto ? _iconWidthAuto = 175.0 : _iconWidthAuto = 160.0;
   }
 
-  _automatic() {
-    return Container(
-      margin: EdgeInsets.all(8),
-      width: 270,
-      height: 210,
-      child: Card(
-        elevation: 20,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            const ListTile(
-              leading: Icon(
-                Icons.info,
-              ),
-              title: Text("Güncel Bilgiler"),
-            ),
-            Divider(
-              thickness: 5,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Azami Yakıt Ağırlığı:",
-                        style: defaultWhiteBigStyle,
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        "5000,45 kg",
-                        style: defaultWhiteBigStyle,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Sıfır Yakıt Ağırlığı:",
-                        style: defaultWhiteBigStyle,
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        "13270 kg",
-                        style: defaultWhiteBigStyle,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular((15))),
-      ),
-    );
-  }
-
   _calculateFuel() {
     return Flexible(
       child: Container(
-        margin: EdgeInsets.all(8),
-        width: 270,
-        height: 210,
-        child: Card(
-          elevation: 20,
-          child:Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
+          margin: EdgeInsets.all(8),
+          width: size.width,
+          height: 210,
+          child: Card(
+            elevation: 20,
+            child: Row(
+              children: <Widget>[_mode(), _automaticFuel()],
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular((15))),
+          )),
+    );
+  }
+
+  _automaticFuel() {
+    return Flexible(
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(Colors.transparent, BlendMode.hue),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(Strings.VOLUME, style: defaultWhiteStyle),
-                Slider(
-                  activeColor: wabBackgroundColor,
-                  min: 0,
-                  max: 100,
-                  value: 10,
-                  onChanged: (value) {
-                    (context as Element).markNeedsBuild();
-
-                  },
-                )
-
+                Text(Strings.FUEL_DENSITY, style: defaultWhiteStyle),
+                Flexible(
+                  child: Slider(
+                    activeColor: wabBackgroundColor,
+                    min: 0,
+                    max: 100,
+                    value: _densityValue,
+                    onChanged: _isAnimatedManu
+                        ? null
+                        : (value) {
+                            _densityValue = value;
+                            (context as Element).markNeedsBuild();
+                          },
+                  ),
+                ),
               ],
             ),
-
-          shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular((15))),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(Strings.FUEL_QUANTITY, style: defaultWhiteStyle),
+                Flexible(
+                  child: Slider(
+                    activeColor: wabBackgroundColor,
+                    min: 0,
+                    max: 100,
+                    value: _quantityValue,
+                    onChanged: _isAnimatedManu
+                        ? null
+                        : (value) {
+                            _quantityValue = value;
+                            (context as Element).markNeedsBuild();
+                          },
+                  ),
+                ),
+              ],
+            ),
+            new RaisedButton(
+                onPressed: _isAnimatedManu ? null : () {},
+                child: Text(Strings.LOAD_FUEL)),
+            new RaisedButton(
+                onPressed: _isAnimatedManu ? null : () {},
+                child: Text(Strings.LOAD_ALL_FUEL)),
+          ],
         ),
       ),
     );
   }
 
-/* testtt(){
+  _tankList() {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  flex: _flexFactor1,
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: GestureDetector(
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            'sssss',
+            width: size.width,
+            height: size.height / 2,
+            padding: EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular((15))),
+              child: ListView(
+                padding: EdgeInsets.all(8.0),
+                children: fuelTankList
+                    .map((data) => ListTile(
+                          title: Text(data.name),
+                          subtitle: Row(
+                            children: <Widget>[
+                              _isAnimatedAuto
+                                  ? Text(data.weight.toString())
+                                  : Container(
+                                      width: 100,
+                                      height: 20,
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            hintText: data.weight.toString()),
+                                      ),
+                                    ),
+                              Text(" lbs\t\t" +
+                                  data.arm.toString() +
+                                  " mt\t\t" +
+                                  data.moment.toString() +
+                                  " kg.mt"),
+                            ],
                           ),
-                        ),
-                        margin: const EdgeInsets.all(10.0),
-                        color: const Color(0xFF673ab7),
-                        width: 10.0,
-                        height: 10.0,
-                      ),
-                      onTap: () => setState(() {
-                        _flexFactor1++;
-                      }),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: _flexFactor2,
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: GestureDetector(
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            'aaa',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        margin: const EdgeInsets.all(10.0),
-                        color: const Color(0xFF009688),
-                        width: 48.0,
-                        height: 48.0,
-                      ),
-                      onTap: () => setState(() {
-                        _flexFactor2++;
-                      }),
-                    ),
-                  ),
-                ),
-              ],
+                        ))
+                    .toList(),
+              ),
             ),
           ),
         ],
       ),
     );
-  }*/
+  }
 }

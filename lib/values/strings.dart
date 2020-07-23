@@ -36,4 +36,10 @@ class Strings {
   static const String MAP = "Map";
   static const String VOLUME = "Hacim";
   static const String WEIGHT = "Ağırlık";
+  static const String FUEL_DENSITY = "Yakıt Yoğunluğu";
+  static const String FUEL_QUANTITY = "Yakıt Miktarı";
+  static const String LOAD_FUEL = "Yakıt Dağıt";
+  static const String LOAD_ALL_FUEL = "Maks. Yakıt Dağıt";
+  static const String AUTOMATIC = "Otomatik";
+  static const String MANUEL = "Manuel";
 }

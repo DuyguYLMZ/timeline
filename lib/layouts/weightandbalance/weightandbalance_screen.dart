@@ -37,7 +37,7 @@ class WeightAndBalanceState extends State<WeightAndBalance> {
     WABSeats(null),
     WABCargo(null),
     WABFuel(null),
-    WABSummary(null),
+//    WABSummary(null),
     WABCGResults(null),
   ];
 

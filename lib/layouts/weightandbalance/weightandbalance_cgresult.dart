@@ -7,7 +7,6 @@ import 'package:poly/poly.dart';
 import 'package:tablet_app/model/weightandbalancemodel/cgModel.dart';
 import 'package:tablet_app/values/theme.dart';
 
-
 class WABCGResults extends StatefulWidget {
   GlobalKey scaffoldKey;
 
@@ -25,28 +24,22 @@ class _WABCGResultsState extends State<WABCGResults> {
   double initialFuelWeight = 92;
   double remainingFuelWeight = 56.5;
   bool loadedWithinEnvelope = true;
-  String acName= 'N5000J';
+  String acName = 'N5000J';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text("CG(%Mac) Sonuçları",style: defaultWhiteTitleStyle,),actions: <Widget>[
-        Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: Icon(
-                Icons.add,
-                size: 26.0,
-              ),
-            )),
-      ]
-      ),   body: body(context),
+      body: body(context),
     );
   }
 
   Widget body(BuildContext context) {
-   CGModel model  = CGModel(valueName:"Zero",valueWeight:12,valueWeightUnit:"kg",valueFWDown:15,valueFWUp: 16);
+    CGModel model = CGModel(
+        valueName: "Zero",
+        valueWeight: 12,
+        valueWeightUnit: "kg",
+        valueFWDown: 15,
+        valueFWUp: 16);
 
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
       return _buildVerticalLayout(model);
@@ -69,259 +62,170 @@ class _WABCGResultsState extends State<WABCGResults> {
               children: [
                 Padding(
                     padding: EdgeInsets.fromLTRB(10.0, 10.0, 10, 10),
-                    child: Container(
+                    child:  Container(
                       child: Column(
-                        children: [
+                        children: <Widget>[
                           Container(
-                              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                              decoration: new BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(6.0),
-                                ),
-                                border: Border.all(
-                                  color: white,
-                                  width: 1,
-                                ),
-                              ),
-                              margin: new EdgeInsets.symmetric(vertical: 1.0),
-                              child:  new GestureDetector (
-                                  onLongPress: () {
-                                    showMenu(context: context, position: RelativeRect.fromLTRB(100, 400, 100, 400), items: <PopupMenuEntry>[
-                                      PopupMenuItem(
-                                        value: 2,
-                                        child: Row(
-                                          children: <Widget>[
-                                            Icon(Icons.delete),
-                                            Text("Delete"),
-                                          ],
-                                        ),
-                                      )
-                                    ],);
-                                  },
-                                  child: Container (
-                                    decoration: new BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(6.0),
-                                        ),
-                                        border: Border.all(
-                                          color: white,
-                                          width: 1,
-                                        ),
-                                        color: Colors.white10),
-                                    margin: new EdgeInsets.symmetric(vertical: 1.0),
-                                    child: new ListTile(
-                                      title: new Text(
-                                        model.valueName,
-                                        style: defaultWhiteBigStyle,
-                                      ),
-                                      subtitle: new Text(
-                                        model.valueWeight.toString()+" "+ model.valueWeightUnit + "\t    "+model.valueFWDown.toString() + "\t    "+model.valueFWUp.toString() ,
-                                        style: defaultWhiteStyle,
-                                      ),
-                                    ),
-                                  ))
-                          ),
-                          Container(
-                            child:  Column(
+                            width: MediaQuery.of(context).size.width,
+                            height:
+                            MediaQuery.of(context).size.height / 2,
+                            child: Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: MediaQuery.of(context).size.height / 2,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  color: Color(0xff696969),
+                                  height: 20,
+                                  child: Row(
                                     children: <Widget>[
-                                      Container(
-                                        color: Color(0xff696969),
-                                        height: 20,
-                                        child: Row(
-                                          children: <Widget>[
-                                            Text(
-                                              ' SUMMARY',
-                                              style: defaultWhiteBigStyle,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                          margin: const EdgeInsets.only(left: 20.0),
-                                          color: drawerBackgroundColor,
-                                          child: buildRow()), Divider(color: grey,height: 20.0),
-                                      Container(
-                                          margin: const EdgeInsets.only(left: 20.0),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Text(
-                                                'Takeoff Weight',
-                                                style: defaultWhiteStyle,
-                                              ),
-                                              Text(
-                                                '$takeOffWeight LB',
-                                                style: defaultWhiteStyle,
-                                              ),
-                                            ],
-                                          )),
-                                      Divider(color: grey,height: 20.0),
-                                      Container(
-                                          margin: const EdgeInsets.only(left: 20.0),
-                                          color: drawerBackgroundColor,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Text(
-                                                'Landing Weight',
-                                                style: defaultWhiteStyle,
-                                              ),
-                                              Text(
-                                                '$landingWeight LB',
-                                                style:defaultWhiteStyle,
-                                              ),
-                                            ],
-                                          )), Divider(color: grey,height: 20.0),
-                                      Container(
-                                          margin: const EdgeInsets.only(left: 20.0),
-                                          color: drawerBackgroundColor,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Text(
-                                                'Fuel Load',
-                                                style: defaultWhiteStyle,
-                                              ),
-                                              RichText(
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: "$initialFuelWeight GAL ",
-                                                      style: defaultWhiteStyle,
-                                                    ),
-                                                    WidgetSpan(
-                                                      child: Icon(Icons.arrow_forward,
-                                                          size: 20, color: Colors.indigo),
-                                                    ),
-                                                    TextSpan(
-                                                      text: "56.5GAL ",
-                                                      style: defaultWhiteStyle,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          )),
-                                      Container(
-                                        color: Color(0xff696969),
-                                        height: 43,
-                                        child: Row(
-                                          children: <Widget>[
-                                            Text(
-                                                '  CHART',
-                                                style: defaultWhiteStyle
-                                            ),
-                                          ],
-                                        ),
+                                      Text(
+                                        ' SUMMARY',
+                                        style: defaultWhiteBigStyle,
                                       ),
                                     ],
                                   ),
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: MediaQuery.of(context).size.height / 2,
-                                  color: drawerBackgroundColor,
-                                  child: CustomPaint(
-                                    painter: CurvePainter(),
+                                    margin:
+                                    const EdgeInsets.only(left: 20.0),
+                                    color: drawerBackgroundColor,
+                                    child: buildRow()),
+                                Divider(color: grey, height: 20.0),
+                                Container(
+                                    margin:
+                                    const EdgeInsets.only(left: 20.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text(
+                                          'Takeoff Weight',
+                                          style: defaultWhiteStyle,
+                                        ),
+                                        Text(
+                                          '$takeOffWeight LB',
+                                          style: defaultWhiteStyle,
+                                        ),
+                                      ],
+                                    )),
+                                Divider(color: grey, height: 20.0),
+                                Container(
+                                    margin:
+                                    const EdgeInsets.only(left: 20.0),
+                                    color: drawerBackgroundColor,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text(
+                                          'Landing Weight',
+                                          style: defaultWhiteStyle,
+                                        ),
+                                        Text(
+                                          '$landingWeight LB',
+                                          style: defaultWhiteStyle,
+                                        ),
+                                      ],
+                                    )),
+                                Divider(color: grey, height: 20.0),
+                                Container(
+                                    margin:
+                                    const EdgeInsets.only(left: 20.0),
+                                    color: drawerBackgroundColor,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text(
+                                          'Fuel Load',
+                                          style: defaultWhiteStyle,
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                "$initialFuelWeight GAL ",
+                                                style: defaultWhiteStyle,
+                                              ),
+                                              WidgetSpan(
+                                                child: Icon(
+                                                    Icons.arrow_forward,
+                                                    size: 20,
+                                                    color: Colors.indigo),
+                                              ),
+                                              TextSpan(
+                                                text: "56.5GAL ",
+                                                style: defaultWhiteStyle,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                                Container(
+                                  color: Color(0xff696969),
+                                  height: 43,
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text('  CHART',
+                                          style: defaultWhiteStyle),
+                                    ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height:
+                            MediaQuery.of(context).size.height / 2,
+                            color: drawerBackgroundColor,
+                            child: CustomPaint(
+                              painter: CurvePainter(),
+                            ),
+                          )
                         ],
                       ),
-                    ))
+                    ),)
               ]),
         ));
   }
 
-  Widget _buildHorizontalLayout(CGModel model
-      ) {  return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: drawerBackgroundColor,
-      ),
-      child: Scrollbar(
-        child: ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            children: [
-              Padding(
-                  padding: EdgeInsets.fromLTRB(10.0, 10.0, 10, 10),
-                  child: Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children:[Container(
-                              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                              decoration: new BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(6.0),
-                                ),
-                                border: Border.all(
-                                  color: white,
-                                  width: 1,
-                                ),
-                              ),
-                              margin: new EdgeInsets.symmetric(vertical: 1.0),
-                              child:  new GestureDetector (
-                                  onLongPress: () {
-                                    showMenu(context: context, position: RelativeRect.fromLTRB(100, 400, 100, 400), items: <PopupMenuEntry>[
-                                      PopupMenuItem(
-                                        value: 2,
-                                        child: Row(
-                                          children: <Widget>[
-                                            Icon(Icons.delete),
-                                            Text("Delete"),
-                                          ],
-                                        ),
-                                      )
-                                    ],);
-                                  },
-                                  child: Container (
-                                    decoration: new BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(6.0),
-                                        ),
-                                        border: Border.all(
-                                          color: white,
-                                          width: 1,
-                                        ),
-                                        color: Colors.white10),
-                                    margin: new EdgeInsets.symmetric(vertical: 1.0),
-                                    child: new ListTile(
-                                      title: new Text(
-                                        model.valueName,
-                                        style: defaultWhiteBigStyle,
-                                      ),
-                                      subtitle: new Text(
-                                        model.valueWeight.toString()+" "+ model.valueWeightUnit + "\t    "+model.valueFWDown.toString() + "\t    "+model.valueFWUp.toString() ,
-                                        style: defaultWhiteStyle,
-                                      ),
-                                    ),
-                                  ))
-                          ),],
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              child:  Column(
+  Widget _buildHorizontalLayout(CGModel model) {
+    return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: drawerBackgroundColor,
+        ),
+        child: Scrollbar(
+          child: ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              children: [
+                Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 10, 10),
+                    child: Container(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            child: Container(
+                              child: Column(
                                 children: <Widget>[
                                   Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height / 2,
+                                    height:
+                                    MediaQuery.of(context).size.height /
+                                        2,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
                                         Container(
                                           color: Color(0xff696969),
@@ -336,13 +240,17 @@ class _WABCGResultsState extends State<WABCGResults> {
                                           ),
                                         ),
                                         Container(
-                                            margin: const EdgeInsets.only(left: 20.0),
+                                            margin: const EdgeInsets.only(
+                                                left: 20.0),
                                             color: drawerBackgroundColor,
                                             child: buildRow()),
                                         Container(
-                                            margin: const EdgeInsets.only(left: 20.0),
+                                            margin: const EdgeInsets.only(
+                                                left: 20.0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
                                               children: <Widget>[
                                                 Text(
                                                   'Takeoff Weight',
@@ -355,10 +263,13 @@ class _WABCGResultsState extends State<WABCGResults> {
                                               ],
                                             )),
                                         Container(
-                                            margin: const EdgeInsets.only(left: 20.0),
+                                            margin: const EdgeInsets.only(
+                                                left: 20.0),
                                             color: drawerBackgroundColor,
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
                                               children: <Widget>[
                                                 Text(
                                                   'Landing Weight',
@@ -366,15 +277,18 @@ class _WABCGResultsState extends State<WABCGResults> {
                                                 ),
                                                 Text(
                                                   '$landingWeight LB',
-                                                  style:defaultWhiteStyle,
+                                                  style: defaultWhiteStyle,
                                                 ),
                                               ],
                                             )),
                                         Container(
-                                            margin: const EdgeInsets.only(left: 20.0),
+                                            margin: const EdgeInsets.only(
+                                                left: 20.0),
                                             color: drawerBackgroundColor,
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
                                               children: <Widget>[
                                                 Text(
                                                   'Fuel Load',
@@ -384,16 +298,23 @@ class _WABCGResultsState extends State<WABCGResults> {
                                                   text: TextSpan(
                                                     children: [
                                                       TextSpan(
-                                                        text: "$initialFuelWeight GAL ",
-                                                        style: defaultWhiteStyle,
+                                                        text:
+                                                        "$initialFuelWeight GAL ",
+                                                        style:
+                                                        defaultWhiteStyle,
                                                       ),
                                                       WidgetSpan(
-                                                        child: Icon(Icons.arrow_forward,
-                                                            size: 30, color: Colors.indigo),
+                                                        child: Icon(
+                                                            Icons
+                                                                .arrow_forward,
+                                                            size: 30,
+                                                            color: Colors
+                                                                .indigo),
                                                       ),
                                                       TextSpan(
                                                         text: "56.5GAL ",
-                                                        style: defaultWhiteStyle,
+                                                        style:
+                                                        defaultWhiteStyle,
                                                       ),
                                                     ],
                                                   ),
@@ -405,10 +326,8 @@ class _WABCGResultsState extends State<WABCGResults> {
                                           height: 43,
                                           child: Row(
                                             children: <Widget>[
-                                              Text(
-                                                  '  CHART',
-                                                  style: defaultWhiteStyle
-                                              ),
+                                              Text('  CHART',
+                                                  style: defaultWhiteStyle),
                                             ],
                                           ),
                                         ),
@@ -417,7 +336,9 @@ class _WABCGResultsState extends State<WABCGResults> {
                                   ),
                                   Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height / 2,
+                                    height:
+                                    MediaQuery.of(context).size.height /
+                                        2,
                                     color: drawerBackgroundColor,
                                     child: CustomPaint(
                                       painter: CurvePainter(),
@@ -426,17 +347,17 @@ class _WABCGResultsState extends State<WABCGResults> {
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ))
-            ]),
-      ));}
+                          ),
+                        ],
+                      ),
+                    ))
+              ]),
+        ));
+  }
 
   Row buildRow() {
     CurvePainter cv = new CurvePainter();
-    if(cv.loadedWithinEnvelope!= null && cv.loadedWithinEnvelope){
+    if (cv.loadedWithinEnvelope != null && cv.loadedWithinEnvelope) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -447,7 +368,7 @@ class _WABCGResultsState extends State<WABCGResults> {
           Icon(Icons.check_circle, size: 20, color: Colors.greenAccent),
         ],
       );
-    }else {
+    } else {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -459,7 +380,6 @@ class _WABCGResultsState extends State<WABCGResults> {
         ],
       );
     }
-
   }
 }
 
@@ -478,7 +398,7 @@ class CurvePainter extends CustomPainter {
     originPoint = new Point(interval, size.height - interval);
     endPoint = new Point(size.width - interval, interval);
     Size graphSize =
-    new Size(size.width - 2 * interval, size.height - 2 * interval);
+        new Size(size.width - 2 * interval, size.height - 2 * interval);
 
     //Canvas canvas, String text, Color color, double offsetX, double offsetY
 
@@ -538,8 +458,8 @@ class CurvePainter extends CustomPainter {
     weightPointList.add(zerofuelWeight);
 
     Polygon envelopPoly = new Polygon(pointList);
-    for(Point point in weightPointList){
-      if(envelopPoly.isPointInside(point) == false){
+    for (Point point in weightPointList) {
+      if (envelopPoly.isPointInside(point) == false) {
         loadedWithinEnvelope = false;
       }
     }
@@ -584,8 +504,7 @@ class CurvePainter extends CustomPainter {
 
   void drawText(
       Canvas canvas, String text, Color color, double offsetX, double offsetY) {
-    TextSpan span = new TextSpan(
-        style:defaultWhiteBigStyle, text: text);
+    TextSpan span = new TextSpan(style: defaultWhiteBigStyle, text: text);
     TextPainter tp = new TextPainter(
         text: span,
         textAlign: TextAlign.start,
