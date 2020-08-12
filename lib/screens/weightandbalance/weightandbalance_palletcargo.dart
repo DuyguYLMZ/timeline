@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:tablet_app/values/theme.dart';
 
 class PalletCargo extends StatefulWidget {
@@ -34,11 +35,13 @@ class _PalletCargo extends State<PalletCargo> {
 
   @override
   Widget build(BuildContext context) {
-    final _listTiles = _items
+    /*  final _listTiles = _items
         .map(
           (item) =>
           CheckboxListTile(
             key: Key(item.value),
+            checkColor: white,
+            activeColor: wabBackgroundColor,
             value: item.checked ?? false,
             onChanged: (bool newValue) {
               setState(() => item.checked = newValue);
@@ -50,11 +53,31 @@ class _PalletCargo extends State<PalletCargo> {
           ),
     )
         .toList();
-    return ListView(
-
+    return ReorderableListView(
+      onReorder: _onReorder,
       children: _listTiles,
     );
   }
+  void _onReorder(int oldIndex,int newIndex){
+    setState(() {
+      if(newIndex>oldIndex){
+        newIndex -= 1;
+      }
+      final _ListItem item = _items.removeAt(oldIndex);
+      _items.insert(newIndex,item);
+    });
+  }*/
+    return new StaggeredGridView.countBuilder(
+      crossAxisCount: 4,
+      itemCount:6,
+      itemBuilder:
+          (BuildContext context, int index) => GestureDetector(onTap: (){
+        print(index.toString());
 
-
+      },child: new Container(color: Colors.grey,)),
+      staggeredTileBuilder: (int index) => new StaggeredTile.count(
+          2, index.isEven ? 2 : 1),
+      mainAxisSpacing: 4.0,
+      crossAxisSpacing: 4.0,);
+  }
 }

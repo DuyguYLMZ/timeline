@@ -1,105 +1,55 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tablet_app/util/wabitems/WABItem.dart';
+import 'package:tablet_app/util/weightandbalanceprovider.dart';
 import 'package:tablet_app/values/theme.dart';
-import 'package:tablet_app/widgets/common/appbar.dart';
-import 'package:tablet_app/widgets/common/mainmenu_drawer.dart';
 import 'package:tablet_app/widgets/weightandbalance/infowidget.dart';
 
-class WABCrew extends StatefulWidget {
+class WABCrew extends StatelessWidget {
   GlobalKey scaffoldKey;
 
   WABCrew(this.scaffoldKey);
 
-  @override
-  _WABCrewState createState() {
-    return _WABCrewState();
-  }
-}
-
-class _WABCrewState extends State<WABCrew> {
+  static List<WABItem> selectedCrewList = new List();
+  WABProvider provider;
+  static List crews;
   var currentValue = 0;
-
-  List crews = new List<String>();
-  List crewsWeight = new List<String>();
-  List crewsArm = new List<String>();
-  List crewsmoment = new List<String>();
-  List selectedcrew = new List<bool>();
-
-
-  @override
-  void initState() {
-    super.initState();
-
-    crews.add("Pilot");
-    crews.add("Pilot2");
-    crews.add("Pilot3");
-    crews.add("Pilot4");
-    crewsWeight.add("111");
-    crewsWeight.add("112");
-    crewsWeight.add("113");
-    crewsWeight.add("114");
-    crewsArm.add("111");
-    crewsArm.add("112");
-    crewsArm.add("113");
-    crewsArm.add("114");
-    crewsmoment.add("111 kg.mt");
-    crewsmoment.add("112 kg.mt");
-    crewsmoment.add("113 kg.mt");
-    crewsmoment.add("114 kg.mt");
-    selectedcrew.add(false);
-    selectedcrew.add(false);
-    selectedcrew.add(false);
-    selectedcrew.add(false);
-  }
+  Size size;
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    provider = Provider.of<WABProvider>(context);
+    if (selectedCrewList == null || selectedCrewList.length == 0) {
+      crews = provider.getCrews();
+    }
     return body(context);
   }
 
   Widget body(BuildContext context) {
-    var  size = MediaQuery.of(context).size;
     double infoheight = size.height / 7;
     return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      height: size.height,
+      width: size.width,
       child: Scrollbar(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height / 2.5,
-              child: Column(children: crewRow()),
+            Flexible(
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Column(children: crewRow()),
+                ),
+              ),
             ),
+
             Column(
               children: <Widget>[
                 Divider(color: white, height: 25.0),
-                /*Container(
-                  margin: EdgeInsets.all(10),
-                    decoration: new BoxDecoration(
-                       borderRadius: BorderRadius.all(
-                              Radius.circular(6.0),
-                            ),
-                      color: wabBackgroundColor,
-                      border: Border.all(
-                        color: grey,
-                        width: 1,
-                      ),
-                    ),
-                    height: MediaQuery.of(context).size.height / 7,
-                    child: Center(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        infoRow(crews, crewsWeight, crewsArm, crewsmoment),
-                      ],
-                    )))*/
-                infoRow(crews, crewsWeight, crewsArm, crewsmoment, infoheight),
-                SizedBox(
-                  height: 8,
-                )
+                infoRow(selectedCrewList, selectedCrewList, infoheight)
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -114,29 +64,34 @@ class _WABCrewState extends State<WABCrew> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Checkbox(
-              value: selectedcrew[index],
+              activeColor: wabBackgroundColor,
+              value: crews[index].multiLoadable,
               onChanged: (bool value) {
-                setState(() {
-                  selectedcrew[index] = value;
-                });
+                provider.loadCrew(index, value);
+                if (selectedCrewList != null &&
+                    selectedCrewList.contains(crews[index])) {
+                  selectedCrewList.remove(crews[index]);
+                } else {
+                  selectedCrewList.add(crews[index]);
+                }
               }),
           SizedBox(
             width: 20,
           ),
           Container(
-            width: MediaQuery.of(context).size.width / 2,
+            width: size.width / 2,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(crews[index]),
+                Text(crews[index].id),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(crewsWeight[index] + " kg"),
-                    Text(crewsArm[index] + " mt"),
-                    Text(crewsmoment[index]),
+                    Text(crews[index].weight.toString() + " kg"),
+                    Text(crews[index].startArm.toString() + " mt"),
+                    //   Text(crews[index].),
                   ],
                 )
               ],

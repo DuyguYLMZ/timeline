@@ -1,0 +1,728 @@
+<?xml version="1.0"?>
+<aircraft-configuration> <!--622.25 configuration-->
+    <wab-configuration
+        name="WAB 1-1 Deneme"
+        static-type-id="1">
+        <aircraft-info>
+            <load-type>passenger</load-type>
+            <base-weight>10931.6975</base-weight> <!-- %5  10931.6975-->
+            <base-moment>106539.764</base-moment> <!-- %25 -->
+            <max-taxi-weight>15057.5</max-taxi-weight>
+            <max-takeoff-weight>15010.0</max-takeoff-weight>
+            <max-zero-fuel-weight>13490.0</max-zero-fuel-weight>
+            <max-landing-weight>14630.0</max-landing-weight>
+            <min-mac-percentage>16.0</min-mac-percentage>
+            <max-mac-percentage>30.0</max-mac-percentage>
+            <lemac>9.11145</lemac>
+            <mac>2.43295</mac>
+            <weight-unit>kg</weight-unit>
+            <arm-unit>mt</arm-unit>
+            <moment-unit>kg.mt</moment-unit>
+            <lemac-unit>mt</lemac-unit>
+            <mac-unit>mt</mac-unit>
+            <aircraft-length>20.28535</aircraft-length>
+            <aircraft-wing-span>24.5195</aircraft-wing-span>
+            <flaps-down-to-up-moment-change>0.0</flaps-down-to-up-moment-change>
+            <gears-down-to-up-moment-change>0.0</gears-down-to-up-moment-change>
+            <fuel-load-calculator>fuel.WABFirstMainThenAuxFuelLoadCalculator</fuel-load-calculator>
+            <fuel-tank-validator>poc.1-0.wab.validator.1-0FuelTankValidator</fuel-tank-validator>
+            <armament-validator>poc.1-1.wab.validator.1-1ArmamentValidator</armament-validator>
+        </aircraft-info>
+        <view-options>
+            <view-factory-path>poc.wab.factory.WABWizardViewFactory</view-factory-path>
+            <seat-number-per-row>2</seat-number-per-row>
+            <tabular-seat-conf>true</tabular-seat-conf>
+            <cg-image-path>poc/1-0/wab/conf/CN235WabCGEnvelope.jpg</cg-image-path>
+            <aircraft-image-path>poc/1-0/wab/conf/empty.png</aircraft-image-path>
+            <min-cg-valx>15.789473684210526315789473684211</min-cg-valx>
+            <max-cg-valx>29.45</max-cg-valx>
+            <min-gw-valy>7.600</min-gw-valy>
+            <max-gw-valy>16150.0</max-gw-valy>
+            <min-posx>37.0</min-posx>
+            <min-posy>433.0</min-posy>
+            <max-posx>419.0</max-posx>
+            <max-posy>9.0</max-posy>
+        </view-options>
+        <configuration-group type="crews">
+            <configuration-item
+                dimensions="0.4x0.4"
+                id="Pilot"
+                label-alignment="4"
+                location="1;3.593"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.4x0.4"
+                id="Copilot"
+                label-alignment="4"
+                location="4.0;3.593"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.4x0.4"
+                id="Third Member"
+                label-alignment="4"
+                location="3;4.336"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="host1"
+                location="1.70;7.930"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="host2"
+                location="1.70;8.946"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="host3"
+                location="1.70;10.470"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="host4"
+                location="1.70;11.486"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="cabina1"
+                location="1.70;12.502"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="cabina2"
+                location="2.50;12.502"
+                max-weight="100"
+                type="crew"
+                weight="85" />
+        </configuration-group>
+        <configuration-type for="seats">
+            <configuration-element
+                max-weight="118"
+                type="Passenger" />
+        </configuration-type>
+        <configuration-group type="seats">
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="ACM1"
+                location="0.1;6.600"
+                max-weight="118"
+                type="seat"
+                weight="85" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="ACM2"
+                location="2.1;6.600"
+                max-weight="118"
+                type="seat"
+                weight="85" />
+        </configuration-group>
+        <configuration-group type="free-cargo">
+            <configuration-item
+                id="Ekip Dokümanları"
+                location="1;3.705"
+                max-weight="16"
+                type="0"
+                weight="2" />
+            <configuration-item
+                id="Ekip Bagaji"
+                location="1;4.067"
+                max-weight="30"
+                type="1"
+                weight="30" />
+            <configuration-item
+                id="Steward Ekipmani"
+                location="1;4.644"
+                max-weight="50"
+                type="2"
+                weight="20" />
+            <configuration-item
+                id="Acil Durum Ekipmani"
+                location="1;4.644"
+                max-weight="50"
+                type="3"
+                weight="25.3" />
+            <configuration-item
+                id="Ekstra Ekipman"
+                location="1;4.644"
+                max-weight="50"
+                type="4"
+                weight="25" />
+            <configuration-item
+                id="Diğer"
+                max-weight="50"
+                repeatable="true"
+                type="5"
+                weight="10" />
+        </configuration-group>
+        <configuration-group type="fuel-tanks">
+            <configuration-item
+                dimensions="20x20"
+                fuel-density="0.803"
+                id="1-1 - Left - Aux Tank"
+                label-alignment="4"
+                location="0;10.400"
+                max-capacity="1510.5"
+                max-weight="778.05"
+                type="AUX" />
+            <configuration-item
+                dimensions="20x20"
+                fuel-density="0.803"
+                id="1-1 - Left - Main Tank"
+                label-alignment="4"
+                location="0;10.400"
+                max-capacity="969"
+                max-weight="1213.15"
+                type="MAIN" />
+            <configuration-item
+                dimensions="20x20"
+                fuel-density="0.803"
+                id="1-1 - Right - Main Tank"
+                label-alignment="4"
+                location="5;10.400"
+                max-capacity="969"
+                max-weight="1213.15"
+                type="MAIN" />
+            <configuration-item
+                dimensions="20x20"
+                fuel-density="0.803"
+                id="1-1 - Right - Aux Tank"
+                label-alignment="4"
+                location="5;10.400"
+                max-capacity="1510.5"
+                max-weight="778.05"
+                type="AUX" />
+        </configuration-group>
+        <configuration-group type="cargo">
+
+        </configuration-group>
+        <configuration-type for="fixed-cargo">
+            <configuration-element
+                dimensions="0.45x0.45"
+                id="psf"
+                max-weight="7.125"
+                station-type="psf"
+                type="PSF" />
+            <configuration-element
+                dimensions="0.45x0.45"
+                id="rhb"
+                max-weight="3.515"
+                station-type="rhb"
+                type="RHB" />
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="gopro"
+                max-weight="8.645"
+                station-type="hhc"
+                type="camera" />
+            <!--SYNTHETICS-->
+            <configuration-element
+                dimensions="0.00333333333333333333333333333333x0.00333333333333333333333333333333"
+                id="chute1"
+                max-weight="0.17575"
+                station-type="seat"
+                type="chute1" /><!--max 30 for each magazine-->
+            <configuration-element
+                dimensions="0.00333333333333333333333333333333x0.00333333333333333333333333333333"
+                id="chute2"
+                max-weight="0.1235"
+                station-type="aseat"
+                type="chute2" />     <!--max 30 for each magazine-->
+            <!--CARGO-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.016x0.00651515"
+                id="f"
+                max-weight="3.42"
+                station-type="rack-small"
+                type="cargo01" />  <!--F size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="7.22"
+                station-type="rack"
+                type="cargo02" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.024x0.00977272"
+                id="g"
+                max-weight="3.705"
+                station-type="rack-small"
+                type="cargo03" />  <!--G size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="8.835"
+                station-type="rack"
+                type="cargo04" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="7.79"
+                station-type="rack"
+                type="cargo05" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="9.88"
+                station-type="rack"
+                type="cargo06" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.024x0.00977272"
+                id="g"
+                max-weight="5.415"
+                station-type="rack-small"
+                type="cargo07" />  <!--G size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="8.455"
+                station-type="rack"
+                type="cargo08" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="13.585"
+                station-type="rack"
+                type="cargo09" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="15.96"
+                station-type="rack"
+                type="cargo10" />  <!--A size sonobouy-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.01954545"
+                id="a"
+                max-weight="12.635"
+                station-type="rack"
+                type="cargo11" />  <!--A size sonobouy-->
+            <!--PLANTS-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.01x0.01"
+                id="flower1"
+                max-weight="2.8025"
+                station-type="smart-pack"
+                type="flower1" /> <!--max 10 for each rack-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.01x0.01"
+                id="flower2"
+                max-weight="1.33"
+                station-type="flower-pack"
+                type="flower2" /> <!--max 10 for each rack-->
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.016x0.00651515"
+                id="flower3"
+                max-weight="1.9"
+                station-type="flower-pack"
+                type="flower3" /> <!--max 10 for each rack-->
+
+            <!--COMMS-->
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;7.830"
+                max-weight="2.09"
+                station-type="com1"
+                type="mobilephone" />
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;7.930"
+                max-weight="2.47"
+                multi-loadable="true"
+                repeatable="true"
+                station-type="com2"
+                type="mobilephone" /> <!--up to 2-->
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;7.830"
+                max-weight="10.355"
+                station-type="com3"
+                type="mobilephone" />
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;10.860"
+                max-weight="1.71"
+                station-type="com4"
+                type="mobilephone" />
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;8.438"
+                max-weight="9.5"
+                station-type="com5"
+                type="mobilephone" />
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;2.981"
+                max-weight="3.534"
+                station-type="com6"
+                type="mobilephone" />
+            <configuration-element
+                dimensions="0.10x0.10"
+                id="comm"
+                location="0.1;8.000"
+                max-weight="3.705"
+                station-type="com7"
+                type="mobilephone" />
+            <!--RACKS-->
+            <configuration-element
+                dimensions="0.0x0.0"
+                id="rack-bouguet"
+                max-weight="5.7 "
+                station-type="bouquet"
+                type="Bouquet" /> <!--max 10 for each rack-->
+            <configuration-element
+                dimensions="0.0x0.0"
+                id="rack1"
+                max-weight="44.27"
+                station-type="rack"
+                type="rack1" /> <!--Rack2 for 20 normal Sonobouy comparments.  4 small sonobouy compartments-->
+            <configuration-element
+                dimensions="0.0x0.0"
+                id="rack2"
+                max-weight="45.03"
+                station-type="rack"
+                type="rack2" /> <!--Rack2 for 20 normal Sonobouy comparments.  4 small sonobouy compartments-->
+            <configuration-element
+                dimensions="0.0x0.0"
+                id="rack3"
+                location="0.0;0.0"
+                max-weight="26.6"
+                multi-loadable="true"
+                station-type="srack"
+                type="Combined Rack" /> <!--Rack1 for 6 SUS compartments-->
+            <!--EXTINGUISHER-->
+            <configuration-element
+                dimensions="0.096x0.24"
+                id="exshelf"
+                max-weight="56.81"
+                station-type="exshelf"
+                type="extinguisher-rack" />
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.12"
+                id="forwexshelf"
+                max-weight="237.5"
+                station-type="forwexshelf"
+                type="extinguisher" /> <!--it can be 0.1.2-->
+            <!--ANIMALS-->
+            <configuration-element
+                dimensions="0.096x0.24"
+                max-weight="49.0295"
+                station-type="cowpack"
+                type="cowpack" />
+            <configuration-element
+                air-dropped="true"
+                dimensions="0.048x0.12"
+                max-weight="45.6"
+                multi-loadable="true"
+                station-type="cow"
+                type="cow" /> <!--it can be 0.1.2-->
+        </configuration-type>
+        <configuration-group type="fixed-cargo">
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="PSF"
+                location="3;6.600"
+                max-weight="7.125"
+                type="psf"
+                weight="7.125" />
+            <configuration-item
+                dimensions="0.45x0.45"
+                id="RHB"
+                location="1;12.502"
+                max-weight="3.515"
+                type="rhb"
+                weight="3.515" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="gopro"
+                location="1;7.418"
+                max-weight="8.645"
+                type="gopro"
+                weight="8.645" />
+            <!--COMMS-->
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com1"
+                location="1.0;7.830"
+                max-weight="2.09"
+                type="com1" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com2"
+                location="1.4;7.930"
+                max-weight="2.47"
+                multi-loadable="true"
+                repeatable="true"
+                type="com2" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com3"
+                location="1.0;7.830"
+                max-weight="10.355"
+                type="com3" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com4"
+                location="0.9;10.860"
+                max-weight="1.71"
+                type="com4" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com5"
+                location="0.9;8.438"
+                max-weight="9.5"
+                type="com5" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com6"
+                location="0.9;2.981"
+                max-weight="3.534"
+                type="com6" />
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="com7"
+                location="0.9;8.000"
+                max-weight="3.705"
+                type="com7" />
+            <!--PAYLOAD -->
+
+            <configuration-item
+                dimensions="0.20x0.20"
+                id="FFC"
+                location="3.0;2.981"
+                max-weight="10.545"
+                type="seat" /> <!--FWD Right-Left Magazine-->
+            <configuration-item
+                dimensions="0.20x0.20"
+                id="ACFC"
+                location="3.0;13.957"
+                max-weight="10.545"
+                type="aseat" /><!--AFT CF Right-Left Magazine-->
+            <!--PLANTS-->
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="flower1"
+                location="3.10;14.430"
+                max-weight="28.025"
+                multi-loadable="true"
+                type="smart-pack" /><!--todo: change dimensions-->
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="lflowers"
+                location="3.10;14.430"
+                max-weight="15.2"
+                multi-loadable="true"
+                type="flower-pack" /><!--todo: change dimensions-->
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="rflowers"
+                location="3.10;14.430"
+                max-weight="15.2"
+                multi-loadable="true"
+                type="flower-pack" /><!--todo: change dimensions-->
+            <configuration-item
+                dimensions="0.10x0.10"
+                id="bouquet"
+                location="3.10;14.311"
+                max-weight="11.4"
+                multi-loadable="true"
+                type="bouquet" /><!--todo: change dimensions-->
+            <!--RACKS-->
+            <configuration-item
+                dimensions="1.056x0.430"
+                id="Bouquet_R"
+                location="3.10;14.430"
+                max-weight="200.45"
+                multi-loadable="true"
+                type="rack" /> <!--Smoke Rack-->            <!-- 205 for sonobuoy. 6 for itself. Rack1 for 20 normal Sonobouy comparments (0.960x2.40).4 small sonobouy compartments (0.096x0.24)-->
+            <configuration-item
+                dimensions="1.056x0.430"
+                id="Bouquet_L"
+                location="0.1;14.430"
+                max-weight="200.45"
+                multi-loadable="true"
+                type="rack" />  <!--Smoke Rack-->         <!--Rack1 for 20 normal Sonobouy comparments (0.960x2.40). 6 SUS compartments (0.096x0.24)-->
+            <configuration-item
+                dimensions="1.056x0.430"
+                id="Cargo_R2"
+                location="3.10;14.910"
+                max-weight="239.02"
+                multi-loadable="true"
+                type="rack" />   <!--Rack2 for 20 normal Sonobouy comparments (0.960x2.40).4 small sonobouy compartments (0.096x0.24)-->
+            <configuration-item
+                dimensions="1.056x0.430"
+                id="Cargo_L1"
+                location="0.1;14.910"
+                max-weight="239.78"
+                multi-loadable="true"
+                type="rack" />    <!--Rack2 for 20 normal Sonobouy comparments (0.960x2.40). 6 SUS compartments (0.096x0.24)-->
+            <configuration-item
+                dimensions="0.096x0.03909"
+                id="Rack_C"
+                location="0.1;13.693"
+                max-weight="221.35"
+                multi-loadable="true"
+                type="srack" /> <!--205 for sonobuoys. 28 for itself. Combined Mission Rack for 6 SUS compartments-->
+
+            <configuration-item
+                dimensions="0.096x0.24"
+                id="extinguisher-rack"
+                location="-1.0;10.510"
+                max-weight="56.81"
+                type="extinguisher-rack" />
+            <configuration-item
+                dimensions="0.096x0.24"
+                id="extinguisher     "
+                location="-1.0;10.540"
+                max-weight="475"
+                multi-loadable="true"
+                type="extinguisher" /> <!--it can be 0.1.2-->
+
+            <configuration-item
+                dimensions="0.096x0.24"
+                id="cowpack"
+                location="-1.0;15.506"
+                max-weight="49.0295"
+                type="cowpack" />
+            <configuration-item
+                dimensions="0.096x0.24"
+                id="cow"
+                location="-1.0;15.679"
+                max-weight="91.2"
+                multi-loadable="true"
+                type="cow" /> <!--it can be 0.1.2-->
+
+        </configuration-group>
+        <configuration-definition type="cargo">
+            <suitable-place-checker>poc.wab.util.DummySuitablePlaceChecker</suitable-place-checker>
+            <max-loadable-length>9.1637</max-loadable-length>
+            <max-loadable-width>4.75</max-loadable-width>
+            <lock-step>0.095</lock-step>
+            <start-x>0.0</start-x>
+            <start-y>4.2712</start-y>
+            <id>AC Fuselage</id>
+            <max-weight>8422.7</max-weight>
+        </configuration-definition>
+        <configuration-group type="view-only">
+            <configuration-item
+                dimensions="5.0x0.0"
+                id="STA 1"
+                label-alignment="4"
+                location="0.0;1.587"
+                type="view only" />
+            <configuration-item
+                dimensions="5.0x0.0"
+                id="STA 2"
+                label-alignment="4"
+                location="0.0;4.496"
+                type="view only" />
+            <configuration-item
+                dimensions="5.0x0.0"
+                id="STA 3"
+                label-alignment="4"
+                location="0.0;14.142"
+                type="view only" />
+            <configuration-item
+                dimensions="5.0x0.0"
+                id="STA 4"
+                label-alignment="4"
+                location="0.0;16.846"
+                type="view only" />
+            <configuration-item
+                dimensions="5.0x0.0"
+                id="STA 5"
+                label-alignment="4"
+                location="0.0;19.550"
+                type="view only" />
+            <configuration-item
+                dimensions="5.0x0.0"
+                id=""
+                label-alignment="4"
+                location="0.0;20.0"
+                type="view only" />
+        </configuration-group>
+        <drawing-item-group type="right-wing">
+            <point location="4.75; 9.025 " />
+            <point location="6.65; 9.025 " />
+            <point location="6.745;7.6   " />
+            <point location="6.175;7.6   " />
+            <point location="6.84; 7.41  " />
+            <point location="7.125;7.22  " />
+            <point location="7.41; 7.41  " />
+            <point location="8.075;7.6   " />
+            <point location="7.505;7.6   " />
+            <point location="7.6;  9.025 " />
+            <point location="14.25;9.975 " />
+            <point location="15.2; 10.925" />
+            <point location="7.6;  11.875" />
+            <point location="4.75; 11.875" />
+        </drawing-item-group>
+        <drawing-item-group type="left-wing">
+            <point location="0.0;9.025" />
+            <point location="-2.0;9.025 " />
+            <point location="-2.1;7.6" />
+            <point location="-1.5;7.6" />
+            <point location="-2.2;7.41" />
+            <point location="-2.5;7.22" />
+            <point location="-2.8;7.41" />
+            <point location="-3.5;7.6" />
+            <point location="-2.9;7.6" />
+            <point location="-3.0;9.025" />
+            <point location="-10.0;9.975 " />
+            <point location="-11.0;10.925" />
+            <point location="-3.0;11.875" />
+            <point location="0.0;11.875" />
+        </drawing-item-group>
+        <drawing-item-group type="rear-right-wing">
+            <point location="5.0;18.525" />
+            <point location="5.5;18.810" />
+            <point location="8.5;19.475" />
+            <point location="8.5;20.900" />
+            <point location="3.5;20.900" />
+        </drawing-item-group>
+        <drawing-item-group type="rear-left-wing">
+            <point location="0.0;18.525" />
+            <point location="-0.5;18.810" />
+            <point location="-3.5;19.475" />
+            <point location="-3.5;20.900" />
+            <point location="1.5;20.900" />
+        </drawing-item-group>
+        <cargo-constraints>
+
+        </cargo-constraints>
+    </wab-configuration>
+</aircraft-configuration>

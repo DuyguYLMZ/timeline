@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               layers: [
                 new TileLayerOptions(
                     urlTemplate:
-                        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     subdomains: ['a', 'b', 'c']),
                 new MarkerLayerOptions(markers: addMarker())
               ])
@@ -97,13 +97,13 @@ class _HomePageState extends State<HomePage> {
         height: 90.0,
         point: new LatLng(xx, yy),
         builder: (context) => new Container(
-              child: IconButton(
-                  color: black,
-                  icon: Icon(Icons.flag),
-                  onPressed: () {
-                    _showDialog(context);
-                  }),
-            )));
+          child: IconButton(
+              color: black,
+              icon: Icon(Icons.flag),
+              onPressed: () {
+                _showDialog(context);
+              }),
+        )));
     return markerList;
   }
   void _showDialog(BuildContext context) {

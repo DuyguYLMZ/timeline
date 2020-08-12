@@ -1,11 +1,14 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tablet_app/model/weightandbalancemodel/seats.dart';
+import 'package:tablet_app/util/weightandbalanceprovider.dart';
+import 'package:tablet_app/widgets/common/picker.dart';
 import 'package:tablet_app/values/theme.dart';
 
 import '../numberpicker.dart';
 
-void showPickerDialog(BuildContext context, int index) {
+/*void showPickerDialog(BuildContext context, int index) {
   showDialog<double>(
       context: context,
       builder: (BuildContext context) {
@@ -33,4 +36,28 @@ void showPickerDialog(BuildContext context, int index) {
         );
       }).then((double value) {
   });
+}*/
+
+void showPickerDialog(BuildContext context, int index) {
+  WABProvider provider = Provider.of<WABProvider>(context);
+  Picker(
+      adapter: NumberPickerAdapter(data: [
+        NumberPickerColumn(begin: 0, end: 99),
+        NumberPickerColumn(begin: 0, end: 99),
+      ]),
+      delimiter: [
+        PickerDelimiter(
+            child: Container(
+          width: 10.0,
+          alignment: Alignment.center,
+          child: Text("."),
+        ))
+      ],
+      hideHeader: true,
+      title: Text("Ağırlık"),
+      selectedTextStyle: TextStyle(color: wabBackgroundColor),
+      onConfirm: (Picker picker, List value) {
+        String newWeight = (value[0].toString()+"."+value[1].toString());
+        provider.setSeatWeight(index,double.parse(newWeight));
+      }).showDialog(context);
 }

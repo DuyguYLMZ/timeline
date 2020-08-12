@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tablet_app/util/themenotifier.dart';
 import 'package:tablet_app/values/theme.dart';
-import 'package:tablet_app/widgets/menu/menuitems/appbarmenubuttonitems.dart';
-import 'package:tablet_app/widgets/menu/menuitems/settingsmenuitems.dart';
 
 import 'menu/menuitems/toolmenuitems.dart';
 
@@ -14,7 +12,9 @@ class AppBarButtonWidget extends StatelessWidget {
   bool isHome = false;
   bool showCoor = true;
   bool showScaleBar = true;
-  AppBarButtonWidget({this.context, this.scaffoldKey,this.isHome});
+  List<MenuButtonItem> menuContents;
+  Function(int) onMenuItemSelected;
+  AppBarButtonWidget({this.context, this.scaffoldKey,this.isHome, this.menuContents, this.onMenuItemSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,9 @@ class AppBarButtonWidget extends StatelessWidget {
           child: PopupMenuButton(
             child: Text("Menu"),
             itemBuilder: (context) => getMenuItems(),
-            onSelected: (value) {},
+            onSelected:  (value){
+              onMenuItemSelected(value);
+            },
           ),
         ),
         SizedBox(
@@ -52,7 +54,7 @@ class AppBarButtonWidget extends StatelessWidget {
 
   List<Widget> getMenuItems() {
     List<PopupMenuItem> itemList = new List<PopupMenuItem>();
-    for (var item in AppbarMenuButtonItemsEnum.values) {
+    for (var item in menuContents) {
       itemList.add(PopupMenuItem(
         value: item.id,
         child: Text(

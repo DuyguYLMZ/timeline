@@ -63,6 +63,7 @@ Color backgroundColor = Colors.grey[900];
 const Color white = Colors.white;
 const Color black = Colors.black;
 const Color grey = Colors.grey;
+ Color selectedBlue =  _colorFromHex("#FF07489C");
 Color customGrey = Color(0xFF9E9E9E);
 Color barButtonColor = _colorFromHex("#313C47");
 Color visibleBoxBackground = _colorFromHex("#848C95");

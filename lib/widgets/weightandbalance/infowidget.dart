@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tablet_app/model/weightandbalancemodel/seat.dart';
 import 'package:tablet_app/values/theme.dart';
 
-Widget infoRow(List itemlist, List<String> weightlist, List armlist, List momentlist, double height) {
+Widget infoRow(List itemlist, List modelList,double height) {
   return Container(
       margin: EdgeInsets.all(10),
       decoration: new BoxDecoration(
@@ -28,7 +29,7 @@ Widget infoRow(List itemlist, List<String> weightlist, List armlist, List moment
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.local_florist),
-                  Text("Toplam Uçuş Ekibi"),
+                  Text("Toplam "),
                   Text(itemlist.length.toString())
                 ],
               ),
@@ -38,7 +39,7 @@ Widget infoRow(List itemlist, List<String> weightlist, List armlist, List moment
                 children: <Widget>[
                   Icon(Icons.local_florist),
                   Text("Ağırlık"),
-                  totalWeight(weightlist)
+                  totalWeight(modelList)
                 ],
               ),
               Column(
@@ -56,7 +57,7 @@ Widget infoRow(List itemlist, List<String> weightlist, List armlist, List moment
                 children: <Widget>[
                   Icon(Icons.local_florist),
                   Text("Ortalama Arm"),
-                  averageArm(armlist)
+                  averageArm(modelList)
                 ],
               ),
             ],
@@ -65,20 +66,20 @@ Widget infoRow(List itemlist, List<String> weightlist, List armlist, List moment
       )));
 }
 
-totalWeight(List<String> weightlist) {
+totalWeight(List weightlist) {
   double total = 0;
   for (int i = 0; i < weightlist.length; i++) {
-    total += int.parse(weightlist[i].toString());
+    total += weightlist[i].weight;
   }
   return Text(total.toString());
 }
 
-averageArm(List<String> armlist) {
+averageArm(List armlist) {
   double total = 0;
   double averagearm = 0;
   if (armlist != null) {
     for (int i = 0; i < armlist.length; i++) {
-      total += int.parse(armlist[i].toString());
+      total += armlist[i].startArm;
     }
     averagearm = total / armlist.length;
   }
