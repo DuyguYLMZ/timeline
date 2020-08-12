@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tablet_app/util/themenotifier.dart';
 import 'package:tablet_app/values/theme.dart';
+import 'package:tablet_app/widgets/menu/menuitems/home_menu_items.dart';
 
 import 'menu/menuitems/toolmenuitems.dart';
 
@@ -12,7 +13,7 @@ class AppBarButtonWidget extends StatelessWidget {
   bool isHome = false;
   bool showCoor = true;
   bool showScaleBar = true;
-  List<MenuButtonItem> menuContents;
+  List<HomeMenuItem> menuContents;
   Function(int) onMenuItemSelected;
   AppBarButtonWidget({this.context, this.scaffoldKey,this.isHome, this.menuContents, this.onMenuItemSelected});
 
