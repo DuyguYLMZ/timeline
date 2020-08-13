@@ -67,17 +67,6 @@ class _PalletCargo extends State<PalletCargo> {
       _items.insert(newIndex,item);
     });
   }*/
-    return new StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
-      itemCount:6,
-      itemBuilder:
-          (BuildContext context, int index) => GestureDetector(onTap: (){
-        print(index.toString());
-
-      },child: new Container(color: Colors.grey,)),
-      staggeredTileBuilder: (int index) => new StaggeredTile.count(
-          2, index.isEven ? 2 : 1),
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,);
+   return GridView.count(crossAxisCount: 2,crossAxisSpacing: 160,);
   }
 }
