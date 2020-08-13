@@ -96,7 +96,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               width: size.width / 5,
               child: new Text(
                 'Meydan Sıcaklığı',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Flexible(
@@ -147,7 +147,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               width: size.width / 5,
               child: new Text(
                 'Tırmanış Gradienti',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Flexible(
@@ -178,7 +178,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               alignment: Alignment.centerLeft,
               child: new Text(
                 'Flap Durumu',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Container(
@@ -211,7 +211,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               alignment: Alignment.centerLeft,
               child: new Text(
                 'Azami Kalkış Ağırlığı',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Flexible(
@@ -241,7 +241,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               width: size.width / 5,
               child: new Text(
                 'Meydan İrtifası',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Flexible(
@@ -272,7 +272,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               width: size.width / 5,
               child: new Text(
                 'Sürüklenme Katsayısı',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Flexible(
@@ -303,7 +303,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
               alignment: Alignment.centerLeft,
               child: new Text(
                 'Azami Yük Ağırlığı',
-                style: normalTextStyle,
+                style: defaultWhiteStyle,
               ),
             ),
             Flexible(
@@ -323,7 +323,7 @@ class _WABWeightCalculationState extends State<WABWeightCalculation> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'kg',
-                      style: normalTextStyle,
+                      style: defaultWhiteStyle,
                     ),
                   ),
                 ]),

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tablet_app/model/weightandbalancemodel/fuel.dart';
+import 'package:tablet_app/model/weightandbalancemodel/Fuel.dart';
 import 'package:tablet_app/values/strings.dart';
 import 'package:tablet_app/values/theme.dart';
+import 'package:tablet_app/widgets/common/custom_dropdownmenu.dart';
 
 class WABFuel extends StatefulWidget {
   GlobalKey scaffoldKey;

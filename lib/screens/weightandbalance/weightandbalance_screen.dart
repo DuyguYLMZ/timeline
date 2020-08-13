@@ -1,22 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tablet_app/values/theme.dart';
-import 'package:tablet_app/widgets/common/appbar.dart';
-import 'package:tablet_app/widgets/common/mainmenu_drawer.dart';
-import 'package:tablet_app/widgets/menu/menuitems/weightandbalance_menuitems.dart';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_basicconfiguration.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_cargo.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_cgresult.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_crew.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_fuel.dart';
-import 'package:tablet_app/screens/weightandbalance/weightandbalance_screen.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_seats.dart';
-import 'package:tablet_app/screens/weightandbalance/weightandbalance_summary.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_weightcalculation.dart';
 import 'package:tablet_app/values/theme.dart';
+import 'package:tablet_app/widgets/common/appbar.dart';
+import 'package:tablet_app/widgets/common/mainmenu_drawer.dart';
+import 'package:tablet_app/widgets/menu/menuitems/weightandbalance_menuitems.dart';
 
 class WeightAndBalance extends StatefulWidget {
   GlobalKey scaffoldKey;
@@ -39,7 +33,7 @@ class WeightAndBalanceState extends State<WeightAndBalance> {
     WABSeats(null),
     WABCargo(null),
     WABFuel(null),
-    WABSummary(null),
+//    WABSummary(null),
     WABCGResults(null),
   ];
 

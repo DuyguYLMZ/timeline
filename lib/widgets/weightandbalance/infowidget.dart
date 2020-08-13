@@ -18,52 +18,52 @@ Widget infoRow(List itemlist, List modelList,double height) {
       height: height,
       child: Center(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.local_florist),
-                  Text("Toplam "),
-                  Text(itemlist.length.toString())
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.local_florist),
-                  Text("Ağırlık"),
-                  totalWeight(modelList)
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.local_florist),
-                  Text("Moment"),
-                  Text(itemlist.length.toString())
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.local_florist),
-                  Text("Ortalama Arm"),
-                  averageArm(modelList)
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.local_florist),
+                      Text("Toplam "),
+                      Text(itemlist.length.toString())
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.local_florist),
+                      Text("Ağırlık"),
+                      totalWeight(modelList)
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.local_florist),
+                      Text("Moment"),
+                      Text(itemlist.length.toString())
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.local_florist),
+                      Text("Ortalama Arm"),
+                      averageArm(modelList)
+                    ],
+                  ),
                 ],
               ),
             ],
-          ),
-        ],
-      )));
+          )));
 }
 
 totalWeight(List weightlist) {

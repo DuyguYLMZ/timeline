@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tablet_app/screens/weightandbalance/weightandbalance_fixedcargo.dart';
+import 'package:tablet_app/screens/weightandbalance/weightandbalance_freecargo.dart';
 import 'package:tablet_app/screens/weightandbalance/weightandbalance_palletcargo.dart';
 import 'package:tablet_app/values/theme.dart';
-import 'package:tablet_app/widgets/common/appbar.dart';
-import 'package:tablet_app/widgets/common/mainmenu_drawer.dart';
 
 class WABCargo extends StatefulWidget {
   GlobalKey scaffoldKey;
@@ -58,9 +58,9 @@ class _WABCargoState extends State<WABCargo> {
       case "Palet":
         return PalletCargo();
       case "Serbest":
-        return;
+        return FreeCargo();
       case "Sabit":
-        return;
+        return FixedCargo();
       default:
         return Container();
     }

@@ -8,8 +8,8 @@ enum WeightAndBalanceMenuItems {
   SEATS,
   CARGO,
   FUEL,
-  SUMMARY,
- CG
+  // SUMMARY,
+  CG
 }
 
 class WeightAndBalanceMenu {
@@ -33,8 +33,8 @@ extension MenuButtonItemsExtension on WeightAndBalanceMenuItems {
         return 4;
       case WeightAndBalanceMenuItems.FUEL:
         return 5;
-      case WeightAndBalanceMenuItems.SUMMARY:
-        return 6;
+    /*  case WeightAndBalanceMenuItems.SUMMARY:
+        return 6;*/
       case WeightAndBalanceMenuItems.CG:
         return 7;
       default:
@@ -45,9 +45,9 @@ extension MenuButtonItemsExtension on WeightAndBalanceMenuItems {
   String get name {
     switch (this) {
       case WeightAndBalanceMenuItems.BASIC_CONFIGURATION:
-        return "Temel Konfigürasyon";
+        return "Temel\nKonfigürasyon";
       case WeightAndBalanceMenuItems.WEIGHT_CALCULATION:
-        return "Yük Ağırlığı Hesaplama";
+        return "Yük Ağırlığı\nHesaplama";
       case WeightAndBalanceMenuItems.CREW_MEMBER:
         return "Uçuş Ekibi";
       case WeightAndBalanceMenuItems.SEATS:
@@ -56,10 +56,10 @@ extension MenuButtonItemsExtension on WeightAndBalanceMenuItems {
         return "Kargo";
       case WeightAndBalanceMenuItems.FUEL:
         return "Yakıt Tankı";
-      case WeightAndBalanceMenuItems.SUMMARY:
-        return "Özet";
+/*      case WeightAndBalanceMenuItems.SUMMARY:
+        return "Özet";*/
       case WeightAndBalanceMenuItems.CG:
-        return "CG(%MAC) Sonuçları";
+        return "CG(%MAC)\nSonuçları";
       default:
         return null;
     }
@@ -79,8 +79,8 @@ extension MenuButtonItemsExtension on WeightAndBalanceMenuItems {
         return Icon(Icons.apps);
       case WeightAndBalanceMenuItems.FUEL:
         return Icon(Icons.edit_attributes);
-      case WeightAndBalanceMenuItems.SUMMARY:
-        return Icon(Icons.bubble_chart);
+/*      case WeightAndBalanceMenuItems.SUMMARY:
+        return Icon(Icons.bubble_chart);*/
       case WeightAndBalanceMenuItems.CG:
         return Icon(Icons.ondemand_video);
       default:

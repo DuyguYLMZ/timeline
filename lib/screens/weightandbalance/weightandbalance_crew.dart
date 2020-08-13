@@ -43,11 +43,10 @@ class WABCrew extends StatelessWidget {
                 ),
               ),
             ),
-
             Column(
               children: <Widget>[
                 Divider(color: white, height: 25.0),
-                infoRow(selectedCrewList, selectedCrewList, infoheight)
+                infoRow(selectedCrewList, selectedCrewList , infoheight)
               ],
             ),
           ],
