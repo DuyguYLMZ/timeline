@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:tablet_app/screens/navdb/menu_models/navdb_context_menu.dart';
 import 'package:tablet_app/values/theme.dart';
 import 'package:tablet_app/widgets/common/appbar.dart';
 import 'package:tablet_app/widgets/common/mainmenu_drawer.dart';
 import 'package:tablet_app/widgets/homefloatingactionbutton.dart';
 import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
+
+import 'navdb/menu_models/home_context_menu.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<MenuButtonItem> contextMenuList = getMenuItems();
+    List<MenuButtonItem> contextMenuList = getHomeMenuItems();
 
     return Scaffold(
       extendBodyBehindAppBar: true,

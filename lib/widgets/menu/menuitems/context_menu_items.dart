@@ -1,10 +1,10 @@
 
 import 'package:tablet_app/widgets/menu/menuitems/menu_button_items.dart';
 
-class NavDBMenuItem extends MenuButtonItem{
+class ContextMenuItem extends MenuButtonItem{
 
 
-  NavDBMenuItem(int id, String name){
+  ContextMenuItem(int id, String name){
     super.itemId = id;
     super.itemName = name;
   }
