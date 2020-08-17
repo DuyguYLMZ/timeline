@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tablet_app/util/palletcargoprovider.dart';
 import 'package:tablet_app/util/routemanagementprovider.dart';
 import 'package:tablet_app/util/themenotifier.dart';
 import 'package:tablet_app/util/weightandbalanceprovider.dart';
@@ -14,6 +15,8 @@ void main() => runApp(MultiProvider(
         ),
         ChangeNotifierProvider<WABProvider>(
           create: (context) => WABProvider(),
+        ), ChangeNotifierProvider<PalletCargoProvider>(
+          create: (context) => PalletCargoProvider(),
         ),
         ChangeNotifierProvider<RouteProvider>(
           create: (context) => RouteProvider(false),

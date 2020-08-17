@@ -40,6 +40,8 @@ class _WABCargoState extends State<WABCargo> {
       child: Scaffold(
         appBar: TabBar(
           tabs: cargoTabs,
+          unselectedLabelColor: grey,
+          labelColor: selectedBlue,
           indicatorColor: wabBackgroundColor,
         ),
         body: TabBarView(
